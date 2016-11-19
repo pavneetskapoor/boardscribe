@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class Note extends Component {
   render() {
     return (
-      <li>{this.props.note.text}</li>
+    <li>{this.props.note.text}</li>
     );
   }
 }
