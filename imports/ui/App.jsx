@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Notes } from '../api/notes.js';
 import { Comments } from '../api/notes.js';
-
+import { Meteor } from 'meteor/meteor';
 
 import Note from './Note.jsx';
 import ExpandedNote from './ExpandedNote.jsx'
@@ -26,15 +26,16 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <ul>
-          {this.renderLogin()}
-          {this.renderNotes()}
-          {this.renderComments()}
-        </ul>
-      </div>
-    );
+    if (Meteor.userId()) {
+      return (
+      <ul>
+        {this.renderNotes()}
+        {this.renderComments()}
+      </ul>
+      )
+    } else {
+      return (<ul>{this.renderLogin()}</ul>)
+    };
   }
 }
 
