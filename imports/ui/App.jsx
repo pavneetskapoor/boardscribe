@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Note from './Note.jsx';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 export default class App extends Component {
   getNotes() {
@@ -16,10 +17,15 @@ export default class App extends Component {
     ));
   }
 
+  renderLogin() {
+    return <AccountsUIWrapper />
+  }
+
   render() {
     return (
       <div className="container">
         <ul>
+          {this.renderLogin()}
           {this.renderNotes()}
         </ul>
       </div>
