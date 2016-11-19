@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Notes } from '../api/notes.js';
 
 import Note from './Note.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
-export default class App extends Component {
-  getNotes() {
-    return [
-      { _id: 1, text: 'First Note' },
-      { _id: 2, text: 'Second Note' }
-    ];
-  }
-
+class App extends Component {
   renderNotes() {
-    return this.getNotes().map((note) => (
+    return this.props.notes.map((note) => (
       <Note key={note._id} note={note} />
     ));
   }
@@ -32,3 +27,13 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  notes: PropTypes.array.isRequired,
+};
+
+export default createContainer(() => {
+  return {
+    notes: Notes.find({}).fetch(),
+  };
+}, App);
