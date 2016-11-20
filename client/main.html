@@ -43,7 +43,7 @@
       <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header">{{courseName}}<i class="material-icons">arrow_drop_down</i></a>
+            <a class="collapsible-header">{{name}}<i class="material-icons">arrow_drop_down</i></a>
             <div class="collapsible-body">
               <ul>
                 {{#each notes}}
@@ -58,6 +58,13 @@
         <li><a href="#!">{{courseName}}</a></li>
       {{/if}}
     {{/each}}
+
+    <form class="addCourse">
+      <div class="input-field col s6">
+          <input placeholder="courses" id="" type="text" name="course" class="courses">
+        </div>
+      <a class="waves-effect waves-light btn red lighten-2 white-text add" id="add-btn">Add Courses</a>
+    </form>
   </ul>
 </div>
 

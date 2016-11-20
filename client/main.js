@@ -20,6 +20,25 @@ Template.navigation.events({
     }
 });
 
+Template.homePage.helpers({
+    'name': function(){
+        return "Some other text";
+    },
+    'otherHelperFunction': function(){
+        return "Some other function";
+    }
+});
+
+Template.homePage.events({
+  'submit .addCourse' : function (event, template) {
+    event.preventDefault();
+    var name = $('[name=course]').val();
+    Courses.insert({
+      name: template.find(".courses").value,
+    });
+  }
+});
+
 // Template.homePage.events({
 //   'click a': function(event){
 //     $(".button-collapse").sideNav();
