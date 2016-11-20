@@ -24,23 +24,47 @@
 
 
 <template name = "homePage">
-  <ul id="slide-out" class="side-nav fixed ">
+  <div class ="row">
+
+  <div class = "col s2 m1">
+  <ul id="slide-out" class="side-nav fixed blue lighten-1">
     <li>
       <div class="userView">
       <div class="background">
-        <img src="images/office.jpg">
+        <img src="/images/header.jpg">
       </div>
-      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#!name"><span class="white-text name">John Doe</span></a>
-      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <img id="user-pic" class="z-depth-5" src="/images/jeffwang.png">
+      <a href="#!name"><span class="white-text name">Jeff Wang</span></a>
+      <a href="#!email"><span class="white-text email">jwang243533@gmail.com</span></a>
     </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>Courses</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a>
-    </li>
+    <li><a class="white-text waves-effect" href="#!"><i class="white-text material-icons">book</i>Courses</a></li>
+    {{#each courses}}
+      {{#if notes}}
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">{{courseName}}<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                {{#each notes}}
+                <li><a href="#!">{{noteName}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      {{else}}
+        <li><a href="#!">{{courseName}}</a></li>
+      {{/if}}
+    {{/each}}
   </ul>
+</div>
+
+<div class="col s8 m11 black">
+  <h1 class="black-text">Hello</h1>
+</div>
+</div>
 
 </template>
 
@@ -57,7 +81,7 @@
 <template name="navigation">
 
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper blue lighten-1">
       <a href="#" class="brand-logo">BoardScribe</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="{{pathFor route='homePage'}}">Home</a></li>
