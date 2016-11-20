@@ -4,8 +4,70 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-  <div id="render-target"></div>
+  {{>Template.dynamic template=content}}
+
 </body>
+
+<template name = "register">
+  {{>navigation}}
+  <h2>Register</h2>
+    <form class="register">
+        <p>Email: <input type="email" name="email"></p>
+        <p>Password: <input type="password" name="password"></p>
+        <p><input type="submit" value="Register"></p>
+    </form>
+</template>
+
+
+<template name = "homePage">
+  <ul id="slide-out" class="side-nav fixed ">
+    <li>
+      <div class="userView">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>Courses</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a>
+    </li>
+  </ul>
+
+</template>
+
+<template name="login">
+    {{>navigation}}
+    <h2>Login</h2>
+    <form class="login">
+        <p>Email: <input type="email" name="email"></p>
+        <p>Password: <input type="password" name="password"></p>
+        <p><input type="submit" value="Login"></p>
+    </form>
+</template>
+
+<template name="navigation">
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">BoardScribe</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{{pathFor route='homePage'}}">Home</a></li>
+        {{#if currentUser}}
+            <li><a href="#" class="logout">Logout</a></li>
+        {{else}}
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <!-- <li><a href="{{pathFor route='login'}}">Login</a></li> -->
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+</template>
